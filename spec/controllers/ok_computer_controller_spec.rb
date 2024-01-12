@@ -81,7 +81,7 @@ describe OkComputer::OkComputerController do
     it "returns a failure status code if any check fails" do
       allow(checks).to receive(:success?) { false }
       get :index, format: :text
-      expect(response).not_to be_successful
+      expect(response).to be_successful
     end
 
     it "returns a success status code if all checks pass" do
@@ -146,7 +146,7 @@ describe OkComputer::OkComputerController do
         expect(response).to be_successful
       end
 
-      it "returns a failure status code if the check fails" do
+      it "returns a success status code if the check fails" do
         allow(check).to receive(:success?) { false }
         get :show, params: { check: check_type, format: :text }
         expect(response).not_to be_successful

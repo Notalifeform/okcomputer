@@ -42,7 +42,9 @@ module OkComputer
     end
 
     def status_code(check)
-      check.success? ? :ok : :internal_server_error
+      # always return 200 - so nginx does not override the contents of the response
+      #check.success? ? :ok : :internal_server_error
+      :ok
     end
 
     def authenticate
